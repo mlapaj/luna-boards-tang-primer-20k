@@ -1,9 +1,9 @@
 [build-system]
-requires = ["setuptools", "setuptools_scm[toml]>=6.2"]
+requires = ["setuptools>=64", "setuptools-git-versioning<2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-dynamic = ["version", "urls"]
+dynamic = ["version"]
 name = "luna-boards"
 authors = [{name = "Great Scott Gadgets", email = "dev@greatscottgadgets.com"}]
 description = "Board and connector definitions for LUNA"
@@ -12,14 +12,16 @@ license = {file = "LICENSE"}
 requires-python = ">3.7"
 
 dependencies = [
-    "amaranth @ git+https://github.com/amaranth-lang/amaranth.git@main",
-    "amaranth-boards @ git+https://github.com/amaranth-lang/amaranth-boards.git@main",
-    "luna @ git+https://github.com/greatscottgadgets/luna.git@main",
+    "amaranth @ git+https://github.com/amaranth-lang/amaranth.git@v0.5.0",
+    "amaranth-boards @ https://github.com/mlapaj/amaranth-boards-tang-primer-20k-luna.git@main",
+    "luna-usb @ git+https://github.com/greatscottgadgets/luna.git@0.2.0",
 ]
 
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["*"]
 
-[tool.setuptools_scm]
-local_scheme = "node-and-timestamp"
+[tool.setuptools-git-versioning]
+enabled = true
+starting_version = "0.2.0"
+
